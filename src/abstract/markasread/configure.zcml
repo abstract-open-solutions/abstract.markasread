@@ -5,7 +5,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="abstract.markasread">
 
-  <five:registerPackage package="." initialize=".initialize" />
+  <includeDependencies package="." />
 
   <genericsetup:registerProfile
       name="default"
@@ -15,5 +15,5 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
-  
+
 </configure>

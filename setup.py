@@ -34,6 +34,7 @@ setup(name='abstract.markasread',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Products.CMFCore',
           # -*- Extra requirements: -*-
       ],
       extras_require={'test': ['plone.app.testing']},
