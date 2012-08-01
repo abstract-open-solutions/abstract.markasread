@@ -47,7 +47,7 @@ class MarkAsReadAnnotatableUtility(object):
         """remove userid from read users annotation on obj"""
         if self.checkMarkAsReadAttributeAnnotatableObject(obj):
             obj_annotated = IAnnotations(obj)
-            if hasattr(obj_annotated, 'read_users') and \
+            if obj_annotated.get('read_users', None) and \
                                 (userid in obj_annotated['read_users']):
                 obj_annotated['read_users'].remove(userid)
                 obj.reindexObject()
