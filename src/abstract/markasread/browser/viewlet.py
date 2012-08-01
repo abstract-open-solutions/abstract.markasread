@@ -39,11 +39,6 @@ class MarkAsReadViewlet(ViewletBase):
     def getCurrentUID(self):
         return self.context.UID()
 
-    @property
-    def adapted(self):
-        adapted = IMarkAsReadAnnotatableAdapter(self.context)
-        return adapted
-
     def is_available(self):
         """Viewlet is available if
         1. current user is Authenticated
@@ -52,9 +47,10 @@ class MarkAsReadViewlet(ViewletBase):
         current_user = self.getCurrentUser()
         if 'Authenticated' not in current_user.getRoles():
             return False
-
+        portal_type = getattr(self.context, 'portal_type', None)
+        if portal_type == 'Folder':
+            return False
         if self.allowed_types is not None:
-            portal_type = getattr(self.context, 'portal_type', None)
             if portal_type in self.allowed_types:
                 return True
         return False
@@ -62,5 +58,6 @@ class MarkAsReadViewlet(ViewletBase):
     def IsReadedByUser(self):
         current_user = self.getCurrentUser()
         userid = current_user.getProperty('id')
-        is_read = self.adapted.IsReadedByUser(userid)
+        adapted = IMarkAsReadAnnotatableAdapter(self.context)
+        is_read = adapted.IsReadedByUser(userid)
         return is_read
