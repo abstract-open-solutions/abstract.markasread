@@ -23,7 +23,7 @@ class MarkAsReadAnnotatableAdapter(object):
         return settings
         
     def checkMarkAsReadAttributeAnnotatableObject(self):
-        """ docstring """
+        """ check if current object is annotatable for mark as read feature """
         return IMarkAsReadAttributeAnnotatable.providedBy(self.context)
 
     def makeAnnotation(self, userid):
