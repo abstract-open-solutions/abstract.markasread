@@ -35,7 +35,7 @@ class MarkAsReadViewlet(ViewletBase):
         pm = self.portal_membership
         current_user = pm.getAuthenticatedMember()
         return current_user
-    
+
     def getCurrentUID(self):
         return self.context.UID()
 
@@ -44,15 +44,15 @@ class MarkAsReadViewlet(ViewletBase):
         1. current user is Authenticated
         2. if current object type is in allowed_types registry
         """
+        if not IMarkAsReadAnnotatableAdapter.providedBy(self.context):
+            return False
+
         current_user = self.getCurrentUser()
         if 'Authenticated' not in current_user.getRoles():
             return False
         portal_type = getattr(self.context, 'portal_type', None)
         if portal_type == 'Folder':
             return False
-        if self.allowed_types is not None:
-            if portal_type in self.allowed_types:
-                return True
         return False
 
     def IsReadedByUser(self):

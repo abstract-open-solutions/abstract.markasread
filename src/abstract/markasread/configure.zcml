@@ -7,9 +7,8 @@
 
   <includeDependencies package="." />
   <i18n:registerTranslations directory="locales" />
-  
+
   <include package=".browser" />
-  
   <include file="annotations.zcml" />
 
   <genericsetup:registerProfile

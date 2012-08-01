@@ -1,10 +1,10 @@
 <div class="markasread"
     tal:condition="view/is_available"
-    i18n:domain="abstract.markasread"
-    tal:define="checkPermission nocall: context/portal_membership/checkPermission;
+    i18n:domain="abstract.markasread">
+
+    <div tal:define="checkPermission nocall: context/portal_membership/checkPermission;
                 read_by_user view/IsReadedByUser;
                 current_user view/getCurrentUser">
-    <div>
         <p tal:content="view/text">text</p>
         <form action="" method="GET" tal:attributes="action string:${context/absolute_url}/@@markasread-action">
             <input type="hidden" name="userid" value="" tal:attributes="value view/getCurrentUser" />

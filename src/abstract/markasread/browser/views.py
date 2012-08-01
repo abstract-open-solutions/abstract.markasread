@@ -30,4 +30,3 @@ class ListReadUsers(BrowserView):
                     }
                 )
         return results
-        
