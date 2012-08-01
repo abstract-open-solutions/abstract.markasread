@@ -1,0 +1,34 @@
+..//browser/templates/list_readusers.pt:18:45:
+-WARNING- - i18n:translate missing for this:
+"""
+title
+"""
+-------------------------------------------------------------------------------
+..//browser/templates/list_readusers.pt:37:74:
+-WARNING- - i18n:translate missing for this:
+"""
+fullname
+"""
+-------------------------------------------------------------------------------
+..//browser/templates/list_readusers.pt:40:70:
+-WARNING- - i18n:translate missing for this:
+"""
+userid
+"""
+-------------------------------------------------------------------------------
+Processing of ..//browser/templates/list_readusers.pt finished. (3 warnings, 0 errors)
+===============================================================================
+..//browser/templates/markasread.pt:10:43:
+-WARNING- - i18n:translate missing for this:
+"""
+text
+"""
+-------------------------------------------------------------------------------
+..//browser/templates/markasread.pt:15:61:
+-ERROR- - i18n:translate missing for this:
+"""
+Read
+"""
+-------------------------------------------------------------------------------
+Processing of ..//browser/templates/markasread.pt finished. (1 warnings, 1 errors)
+===============================================================================

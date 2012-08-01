@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="amar-uninstall-configlet"
+              version="20120518-1"
+              handler="abstract.markasread.setuphandlers.removeConfiglet"
+              title="Remove Mark as Read configlet">Removes the mark as read configlet</import-step>
+</import-steps>

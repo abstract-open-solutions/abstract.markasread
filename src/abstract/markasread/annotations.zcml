@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="abstract.markasread">
+
+    <!-- Annotation handler -->
+    <class class="Products.Archetypes.BaseContent.BaseContent">
+         <implements interface=".interfaces.IMarkAsReadAttributeAnnotatable"/>
+    </class>
+    
+    <!--  Utility section -->   
+    <utility
+        provides=".interfaces.IMarkAsReadAnnotatableUtility"
+        factory=".annotations_utility.MarkAsReadAnnotatableUtility"
+        name="abstract.markasread_annotations"
+    />
+
+    <!-- indexers -->
+    <adapter name="read_users" factory=".indexers.read_users" />
+    
+</configure>

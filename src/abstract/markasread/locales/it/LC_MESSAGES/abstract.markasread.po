@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2012-08-01 14:50+0000\n"
+"PO-Revision-Date: 2012-08-01 14:32+0000\n"
+"Last-Translator: Biagio Grimaldi <biagio@abstract.it>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: abstract.markasread\n"
+
+#: ../profiles/default/controlpanel.xml
+msgid "Abstract Mark As Read Settings"
+msgstr "Configurazioni Abstract Segna come Letto"
+
+#: ../browser/action.py:43
+msgid "Error! No object to read"
+msgstr "Errore! Nessun oggetto specificato"
+
+#: ../browser/action.py:41
+msgid "Error! No user specified"
+msgstr "Errore! Nessun utente specificato"
+
+#: ../browser/markasreadprefs.py:61
+msgid "Mark As Read Settings"
+msgstr "Configurazioni Segna come Letto"
+
+#: ../browser/markasreadprefs.py:59
+msgid "Mark As Read Settings Form"
+msgstr "Form Segna come Letto"
+
+#: ../interfaces.py:24
+msgid "Portal types"
+msgstr "Tipi di oggetti"
+
+#: ../interfaces.py:25
+msgid "Portal types mark as read viewlet may be attached to."
+msgstr "Scegli i tipi ai quali aggiungere la possibilità di essere segnati come letti"
+
+#: ../browser/markasreadprefs.py:60
+msgid "Select properties for Mark As Read"
+msgstr "SPecifica le configurazioni per Segna come Letto"
+
+#: ../browser/action.py:38
+msgid "You have read this object"
+msgstr "Hai letto questo oggetto"
+
+#: ../browser/action.py:30
+msgid "You have to selct checkbox"
+msgstr "Devi selezionare la casella 'Letto'"
+
+#. Default: "You have already read this object!"
+#: ../browser/templates/markasread.pt:23
+msgid "already_read"
+msgstr "Hai già letto questo oggetto"
+
+#. Default: "Mark as read"
+#: ../browser/templates/markasread.pt:7
+msgid "already_read_legend"
+msgstr "Segna come 'Letto'"
+
+#. Default: "Back"
+#: ../browser/templates/list_readusers.pt:52
+msgid "back"
+msgstr "Torna all'oggetto"
+
+#. Default: "Fullname"
+#: ../browser/templates/list_readusers.pt:32
+msgid "fullname_label"
+msgstr ""
+
+#. Default: "Complete List Read Users"
+#: ../browser/templates/markasread.pt:27
+msgid "listusers_label"
+msgstr "Lista completa degli utenti che hanno letto questo oggetto"
+
+#: ../browser/templates/markasread.pt:15
+msgid "read_label"
+msgstr "Letto"
+
+#. Default: "Send"
+#: ../browser/templates/markasread.pt:20
+msgid "send_label"
+msgstr "Invia"
+
+#. Default: "Insert text for users."
+#: ../interfaces.py:19
+msgid "text_description"
+msgstr "Specifica il testo che verrà visualizzato nella form"
+
+#. Default: "Mark as read text"
+#: ../interfaces.py:18
+msgid "text_label"
+msgstr "Testo della form"
+
+#. Default: "Username"
+#: ../browser/templates/list_readusers.pt:33
+msgid "username_label"
+msgstr ""
+

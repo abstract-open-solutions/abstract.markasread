@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="abstract.markasread">
+  <head>
+
+  </head>
+
+  <body>
+
+    <metal:fill fill-slot="main">
+      <metal:main define-macro="main">
+
+        <h1 tal:content="context/Title">title</h1>
+        
+        <div tal:define="folderContents view/getReadUsers;
+                         Batch python:modules['Products.CMFPlone'].Batch;
+                         b_size python:10;
+                         b_start python:0;
+                         b_start request/b_start | b_start;
+                         batch python:Batch(folderContents, b_size, int(b_start), orphan=1);">
+
+            
+            <tal:results tal:condition="folderContents">
+                <table class="listing">
+                    <tbody>
+                        <tr>
+                            <th i18n:translate="fullname_label">Fullname</th>
+                            <th i18n:translate="username_label">Username</th>
+                        </tr>
+                        <tr tal:repeat="user batch">
+                            <td>
+                                <span tal:content="user/fullname">fullname</span>
+                            </td>
+                            <td>
+                                <span tal:content="user/userid">userid</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </tal:results>
+            
+            
+            <!-- Batch Navigation -->
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+        </div>
+        <div>
+            <a href="" tal:attributes="href string:${context/absolute_url}"
+                i18n:translate="back">
+                Back
+            </a>
+        </div>
+
+    </metal:main>
+  </metal:fill>
+
+</body>
+
+</html>

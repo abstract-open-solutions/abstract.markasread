@@ -6,6 +6,11 @@
     i18n_domain="abstract.markasread">
 
   <includeDependencies package="." />
+  <i18n:registerTranslations directory="locales" />
+  
+  <include package=".browser" />
+  
+  <include file="annotations.zcml" />
 
   <genericsetup:registerProfile
       name="default"
@@ -14,6 +19,13 @@
       description="Installs the abstract.markasread package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  <!-- -*- extra stuff goes here -*- -->
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="uninstall abstract.markasread"
+      directory="profiles/uninstall"
+      description="Uninstalls the abstract.markasread package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
 
 </configure>
