@@ -22,7 +22,8 @@ class IMarkAsReadForm(Interface):
         )
 
     allowed_types = schema.Tuple(title=_(u'Portal types'),
-          description=_(u'Portal types mark as read viewlet may be attached to.'),
+          description=_(u"Portal types mark as read "
+              u"viewlet may be attached to."),
           missing_value=tuple(),
           value_type=schema.Choice(
                    vocabulary="plone.app.vocabularies.UserFriendlyTypes"),
@@ -35,7 +36,7 @@ class IMarkAsReadAttributeAnnotatable(IAttributeAnnotatable):
 
 class IMarkAsReadAnnotatableAdapter(Interface):
     """ Utility Interface """
-    
+
     def checkMarkAsReadAttributeAnnotatableObject():
         """ check if annotatable """
 
@@ -44,7 +45,7 @@ class IMarkAsReadAnnotatableAdapter(Interface):
 
     def removeAnnotation():
         """remove userid from read users annotation on obj"""
-        
+
     def resetAnnotation():
         """deleting annotations method"""
 
@@ -53,4 +54,3 @@ class IMarkAsReadAnnotatableAdapter(Interface):
 
     def IsReadedByUser():
         """check if userid is in annotation for obj"""
-    

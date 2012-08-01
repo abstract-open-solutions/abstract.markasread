@@ -13,7 +13,7 @@
            layer="..interfaces.IAbstractMarkAsReadLayer"
            permission="cmf.ManagePortal"
     />
-    
+
     <!-- Render mark as read viewlet -->
     <browser:viewlet
         name="abstract.markasread"
@@ -22,7 +22,7 @@
         layer="..interfaces.IAbstractMarkAsReadLayer"
         permission="zope2.View"
         />
-  
+
     <!-- Mark as read action -->
     <browser:page
        name="markasread-action"
@@ -31,7 +31,7 @@
        layer="..interfaces.IAbstractMarkAsReadLayer"
        permission="zope2.View"
     />
-    
+
     <browser:page
        name="list_readusers"
        for="*"
@@ -40,4 +40,5 @@
        layer="..interfaces.IAbstractMarkAsReadLayer"
        permission="cmf.ManagePortal"
     />
+
 </configure>

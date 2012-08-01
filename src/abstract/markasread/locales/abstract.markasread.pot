@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-01 14:50+0000\n"
+"POT-Creation-Date: 2012-08-01 21:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Abstract Mark As Read Settings"
 msgstr ""
 
-#: ../browser/action.py:43
+#: ../browser/action.py:37
 msgid "Error! No object to read"
 msgstr ""
 
-#: ../browser/action.py:41
+#: ../browser/action.py:35
 msgid "Error! No user specified"
 msgstr ""
 
@@ -45,26 +45,20 @@ msgstr ""
 msgid "Portal types mark as read viewlet may be attached to."
 msgstr ""
 
+#: ../browser/templates/markasread.pt:16
+msgid "Save"
+msgstr ""
+
 #: ../browser/markasreadprefs.py:60
 msgid "Select properties for Mark As Read"
 msgstr ""
 
-#: ../browser/action.py:38
+#: ../browser/action.py:32
 msgid "You have read this object"
 msgstr ""
 
-#: ../browser/action.py:30
+#: ../browser/action.py:23
 msgid "You have to selct checkbox"
-msgstr ""
-
-#. Default: "You have already read this object!"
-#: ../browser/templates/markasread.pt:23
-msgid "already_read"
-msgstr ""
-
-#. Default: "Mark as read"
-#: ../browser/templates/markasread.pt:7
-msgid "already_read_legend"
 msgstr ""
 
 #. Default: "Back"
@@ -78,17 +72,12 @@ msgid "fullname_label"
 msgstr ""
 
 #. Default: "Complete List Read Users"
-#: ../browser/templates/markasread.pt:27
+#: ../browser/templates/markasread.pt:28
 msgid "listusers_label"
 msgstr ""
 
 #: ../browser/templates/markasread.pt:15
 msgid "read_label"
-msgstr ""
-
-#. Default: "Send"
-#: ../browser/templates/markasread.pt:20
-msgid "send_label"
 msgstr ""
 
 #. Default: "Insert text for users."

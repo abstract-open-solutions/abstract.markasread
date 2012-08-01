@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+from BTrees.OIBTree import OISet
 from zope.component import getUtility
 from zope.interface import implements
 from zope.annotation.interfaces import IAnnotations
@@ -21,7 +22,7 @@ class MarkAsReadAnnotatableAdapter(object):
     def settings(self):
         settings = getUtility(IRegistry).forInterface(IMarkAsReadForm, False)
         return settings
-        
+
     def checkMarkAsReadAttributeAnnotatableObject(self):
         """ check if current object is annotatable for mark as read feature """
         return IMarkAsReadAttributeAnnotatable.providedBy(self.context)
@@ -31,15 +32,10 @@ class MarkAsReadAnnotatableAdapter(object):
         ## make annotation
         if self.checkMarkAsReadAttributeAnnotatableObject():
             obj_annotated = IAnnotations(self.context)
-            if obj_annotated.get('read_users', None):
-                if userid not in obj_annotated['read_users']:
-                    obj_annotated['read_users'].append(userid)
-            else:
-                obj_annotated['read_users'] = [userid,]
+            if not obj_annotated.get('read_users', None):
+                obj_annotated['read_users'] = OISet()
+            obj_annotated['read_users'].add(userid)
             self.context.reindexObject()
-        else:
-            obj_annotated = self.context
-        return obj_annotated
 
     def removeAnnotation(self, userid):
         """remove userid from read users annotation on obj"""
@@ -49,10 +45,7 @@ class MarkAsReadAnnotatableAdapter(object):
                                 (userid in obj_annotated['read_users']):
                 obj_annotated['read_users'].remove(userid)
                 self.context.reindexObject()
-        else:
-            obj_annotated = self.context
-        return obj_annotated
-        
+
     def resetAnnotation(self):
         """deleting annotations method"""
         if self.checkMarkAsReadAttributeAnnotatableObject():

@@ -17,7 +17,7 @@ class MarkAsReadAction(BrowserView):
         read = self.request.get('read', '')
         userid = self.request.get('userid', '')
         uid = self.request.get('uid', '')
-        
+
         return_url = self.context.absolute_url()
         if not read:
             message = _(u"You have to selct checkbox")
@@ -35,6 +35,6 @@ class MarkAsReadAction(BrowserView):
                     message = _(u"Error! No user specified")
             else:
                 message = _(u"Error! No object to read")
-        
+
         self.context.plone_utils.addPortalMessage(message)
         return self.request.response.redirect(return_url)

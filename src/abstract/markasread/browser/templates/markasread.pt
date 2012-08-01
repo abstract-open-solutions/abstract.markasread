@@ -1,31 +1,32 @@
-<div class="markasread" tal:condition="view/is_available" i18n:domain="abstract.markasread">
-    <dl class="collapsible collapsedOnLoad" tal:define="checkPermission nocall: context/portal_membership/checkPermission;
-                                                        read_by_user view/IsReadedByUser;
-                                                        current_user view/getCurrentUser">
-        <dt class="collapsibleHeader">
-          <span i18n:translate="already_read_legend">Mark as read</span>
-        </dt>
-        <dd class="collapsibleContent">
-            <p tal:content="view/text">text</p>
-            <form action="" method="GET" tal:attributes="action string:${context/absolute_url}/@@markasread-action">
-                <input type="checkbox" name="read" value="read" 
-                    tal:attributes="checked python:read_by_user and 'checked' or '';
-                                    disabled python:read_by_user and 'disabled' or ''"/>
-                <span i18n:attributes="value read_label">Read</span>
-                <br />
-                <br />
-                <input type="hidden" name="userid" value="" tal:attributes="value view/getCurrentUser" />
-                <input type="hidden" name="uid" value="" tal:attributes="value view/getCurrentUID" />
-                <input i18n:attributes="value send_label" type="submit" value="Send" name="submit"
-                    tal:attributes="disabled python:read_by_user and 'disabled' or ''" />
-            </form>
-            <span i18n:translate="already_read" tal:condition="read_by_user">You have already read this object!</span>
-            <br />
-            <div tal:condition="python:checkPermission('Manage portal', context)">
-                <a href="" tal:attributes="href string:${context/absolute_url}/@@list_readusers" alt="list">
-                    <span i18n:translate="listusers_label">Complete List Read Users</span>
-                </a>
-            </div>
-        </dd>
-    </dl>
+<div class="markasread"
+    tal:condition="view/is_available"
+    i18n:domain="abstract.markasread"
+    tal:define="checkPermission nocall: context/portal_membership/checkPermission;
+                read_by_user view/IsReadedByUser;
+                current_user view/getCurrentUser">
+    <div>
+        <p tal:content="view/text">text</p>
+        <form action="" method="GET" tal:attributes="action string:${context/absolute_url}/@@markasread-action">
+            <input type="hidden" name="userid" value="" tal:attributes="value view/getCurrentUser" />
+            <input type="hidden" name="uid" value="" tal:attributes="value view/getCurrentUID" />
+            <input type="checkbox" name="read" value="read"
+                tal:attributes="checked python:read_by_user and 'checked' or '';
+                                disabled python:read_by_user and 'disabled' or ''"/>
+            <label i18n:translate="read_label"></label>
+            <input i18n:attributes="value" type="submit" value="Save" name="submit"
+                tal:attributes="disabled python:read_by_user and 'disabled' or ''" />
+        </form>
+
+        <tal:comment replace="nothing">
+            <div
+            i18n:translate="already_read"
+            tal:condition="read_by_user">You have already read this object!</div>
+        </tal:comment>
+
+        <div tal:condition="python:checkPermission('Manage portal', context)">
+            <a href="" tal:attributes="href string:${context/absolute_url}/@@list_readusers" alt="list">
+                <span i18n:translate="listusers_label">Complete List Read Users</span>
+            </a>
+        </div>
+    </div>
 </div>

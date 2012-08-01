@@ -9,14 +9,14 @@
          <implements interface=".interfaces.IMarkAsReadAttributeAnnotatable"/>
     </class>
 
-    <!--  Annotation adapter -->  
+    <!--  Annotation adapter -->
     <adapter
        for=".interfaces.IMarkAsReadAttributeAnnotatable"
        provides=".interfaces.IMarkAsReadAnnotatableAdapter"
-       factory=".annotations_utility.MarkAsReadAnnotatableAdapter"
+       factory=".adapters.MarkAsReadAnnotatableAdapter"
        />
 
     <!-- indexers -->
     <adapter name="read_users" factory=".indexers.read_users" />
-    
+
 </configure>
