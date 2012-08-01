@@ -33,11 +33,11 @@
     />
     
     <browser:page
-           name="list_readusers"
-           for="*"
-           class=".views.ListReadUsers"
-           template="templates/list_readusers.pt"
-           layer="..interfaces.IAbstractMarkAsReadLayer"
-           permission="cmf.ManagePortal"
+       name="list_readusers"
+       for="*"
+       class=".views.ListReadUsers"
+       template="templates/list_readusers.pt"
+       layer="..interfaces.IAbstractMarkAsReadLayer"
+       permission="cmf.ManagePortal"
     />
 </configure>

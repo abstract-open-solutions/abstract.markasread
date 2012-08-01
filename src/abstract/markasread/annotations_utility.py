@@ -4,77 +4,75 @@ from zope.interface import implements
 from zope.annotation.interfaces import IAnnotations
 from plone.registry.interfaces import IRegistry
 
-from .interfaces import IMarkAsReadAnnotatableUtility
+from .interfaces import IMarkAsReadAnnotatableAdapter
 from .interfaces import IMarkAsReadAttributeAnnotatable
 from .interfaces import IMarkAsReadForm
 
 
-class MarkAsReadAnnotatableUtility(object):
+class MarkAsReadAnnotatableAdapter(object):
     """ class utility """
-    implements(IMarkAsReadAnnotatableUtility)
+    implements(IMarkAsReadAnnotatableAdapter)
+
+    def __init__(self, context):
+        """Initialize our adapter"""
+        self.context = context
 
     @property
     def settings(self):
         settings = getUtility(IRegistry).forInterface(IMarkAsReadForm, False)
         return settings
         
-    def checkMarkAsReadAttributeAnnotatableObject(self, obj=None):
+    def checkMarkAsReadAttributeAnnotatableObject(self):
         """ docstring """
-        is_annotatable = IMarkAsReadAttributeAnnotatable.providedBy(obj)
-        if is_annotatable and (self.settings.allowed_types is not None):
-            portal_type = getattr(obj, 'portal_type', None)
-            if portal_type in self.settings.allowed_types:
-                return True
-        return False
+        return IMarkAsReadAttributeAnnotatable.providedBy(self.context)
 
-    def makeAnnotation(self, userid='', obj=None):
+    def makeAnnotation(self, userid):
         """annotating method"""
         ## make annotation
-        if self.checkMarkAsReadAttributeAnnotatableObject(obj):
-            obj_annotated = IAnnotations(obj)
-            if userid:
-                if obj_annotated.get('read_users', None):
-                    if userid not in obj_annotated['read_users']:
-                        obj_annotated['read_users'].append(userid)
-                else:
-                    obj_annotated['read_users'] = [userid,]
-            obj.reindexObject()
+        if self.checkMarkAsReadAttributeAnnotatableObject():
+            obj_annotated = IAnnotations(self.context)
+            if obj_annotated.get('read_users', None):
+                if userid not in obj_annotated['read_users']:
+                    obj_annotated['read_users'].append(userid)
+            else:
+                obj_annotated['read_users'] = [userid,]
+            self.context.reindexObject()
         else:
-            obj_annotated = obj
+            obj_annotated = self.context
         return obj_annotated
 
-    def removeAnnotation(self, userid='', obj=None):
+    def removeAnnotation(self, userid):
         """remove userid from read users annotation on obj"""
-        if self.checkMarkAsReadAttributeAnnotatableObject(obj):
-            obj_annotated = IAnnotations(obj)
+        if self.checkMarkAsReadAttributeAnnotatableObject():
+            obj_annotated = IAnnotations(self.context)
             if obj_annotated.get('read_users', None) and \
                                 (userid in obj_annotated['read_users']):
                 obj_annotated['read_users'].remove(userid)
-                obj.reindexObject()
+                self.context.reindexObject()
         else:
-            obj_annotated = obj
+            obj_annotated = self.context
         return obj_annotated
         
-    def resetAnnotation(self, obj=None):
+    def resetAnnotation(self):
         """deleting annotations method"""
-        if self.checkMarkAsReadAttributeAnnotatableObject(obj):
-            obj_annotated = IAnnotations(obj)
+        if self.checkMarkAsReadAttributeAnnotatableObject():
+            obj_annotated = IAnnotations(self.context)
             obj_annotated['read_users'] = []
-            obj.reindexObject()
+            self.context.reindexObject()
         else:
-            obj_annotated = obj
+            obj_annotated = self.context
         return obj_annotated
 
-    def getAnnotation(self, obj=None):
+    def getAnnotation(self):
         """get annotations by name"""
-        if self.checkMarkAsReadAttributeAnnotatableObject(obj):
-            obj_annotated = IAnnotations(obj)
+        if self.checkMarkAsReadAttributeAnnotatableObject():
+            obj_annotated = IAnnotations(self.context)
             value = obj_annotated.get('read_users', [])
         else:
             value = []
         return value
 
-    def IsReadedByUser(self, userid='', obj=None):
+    def IsReadedByUser(self, userid):
         """check if userid is in annotation for obj"""
-        read_users = self.getAnnotation(obj)
+        read_users = self.getAnnotation()
         return userid in read_users

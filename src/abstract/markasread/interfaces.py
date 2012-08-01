@@ -33,5 +33,24 @@ class IMarkAsReadAttributeAnnotatable(IAttributeAnnotatable):
     """ IAttributeAnnotatable Marker interface """
 
 
-class IMarkAsReadAnnotatableUtility(Interface):
+class IMarkAsReadAnnotatableAdapter(Interface):
     """ Utility Interface """
+    
+    def checkMarkAsReadAttributeAnnotatableObject():
+        """ check if annotatable """
+
+    def makeAnnotation():
+        """annotating method"""
+
+    def removeAnnotation():
+        """remove userid from read users annotation on obj"""
+        
+    def resetAnnotation():
+        """deleting annotations method"""
+
+    def getAnnotation():
+        """get annotations by name"""
+
+    def IsReadedByUser():
+        """check if userid is in annotation for obj"""
+    

@@ -8,13 +8,13 @@
     <class class="Products.Archetypes.BaseContent.BaseContent">
          <implements interface=".interfaces.IMarkAsReadAttributeAnnotatable"/>
     </class>
-    
-    <!--  Utility section -->   
-    <utility
-        provides=".interfaces.IMarkAsReadAnnotatableUtility"
-        factory=".annotations_utility.MarkAsReadAnnotatableUtility"
-        name="abstract.markasread_annotations"
-    />
+
+    <!--  Annotation adapter -->  
+    <adapter
+       for=".interfaces.IMarkAsReadAttributeAnnotatable"
+       provides=".interfaces.IMarkAsReadAnnotatableAdapter"
+       factory=".annotations_utility.MarkAsReadAnnotatableAdapter"
+       />
 
     <!-- indexers -->
     <adapter name="read_users" factory=".indexers.read_users" />

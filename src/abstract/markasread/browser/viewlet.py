@@ -6,7 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from ..interfaces import IMarkAsReadForm
-from ..interfaces import IMarkAsReadAnnotatableUtility
+from ..interfaces import IMarkAsReadAnnotatableAdapter
 
 
 class MarkAsReadViewlet(ViewletBase):
@@ -40,10 +40,9 @@ class MarkAsReadViewlet(ViewletBase):
         return self.context.UID()
 
     @property
-    def utility(self):
-        utility = getUtility(IMarkAsReadAnnotatableUtility,
-            name="abstract.markasread_annotations")
-        return utility
+    def adapted(self):
+        adapted = IMarkAsReadAnnotatableAdapter(self.context)
+        return adapted
 
     def is_available(self):
         """Viewlet is available if
@@ -62,6 +61,6 @@ class MarkAsReadViewlet(ViewletBase):
 
     def IsReadedByUser(self):
         current_user = self.getCurrentUser()
-        userid = current_user.getProperty('id', '')
-        is_read = self.utility.IsReadedByUser(userid, self.context)
+        userid = current_user.getProperty('id')
+        is_read = self.adapted.IsReadedByUser(userid)
         return is_read

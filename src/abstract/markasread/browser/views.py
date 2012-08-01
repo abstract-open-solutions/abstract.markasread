@@ -1,8 +1,7 @@
-from zope.component import getUtility
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
-from ..interfaces import IMarkAsReadAnnotatableUtility
+from ..interfaces import IMarkAsReadAnnotatableAdapter
 
 
 class ListReadUsers(BrowserView):
@@ -13,14 +12,13 @@ class ListReadUsers(BrowserView):
         return getToolByName(self.context, 'portal_membership')
 
     @property
-    def utility(self):
-        utility = getUtility(IMarkAsReadAnnotatableUtility,
-            name="abstract.markasread_annotations")
-        return utility
+    def adapted(self):
+        adapted = IMarkAsReadAnnotatableAdapter(self.context)
+        return adapted
 
     def getReadUsers(self):
         """list read users"""
-        read_users = self.utility.getAnnotation(self.context)
+        read_users = self.adapted.getAnnotation()
         results = []
         for ru in read_users:
             member = self.portal_membership.getMemberById(ru)

@@ -1,8 +1,7 @@
-from zope.component import getUtility
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
-from ..interfaces import IMarkAsReadAnnotatableUtility
+from ..interfaces import IMarkAsReadAnnotatableAdapter
 from .. import MessageFactory as _
 
 
@@ -12,12 +11,6 @@ class MarkAsReadAction(BrowserView):
     @property
     def catalog(self):
         return getToolByName(self.context, 'portal_catalog')
-
-    @property
-    def utility(self):
-        utility = getUtility(IMarkAsReadAnnotatableUtility,
-            name="abstract.markasread_annotations")
-        return utility
 
     def __call__(self):
         """make annotation action"""
@@ -34,7 +27,8 @@ class MarkAsReadAction(BrowserView):
                 brain = brain[0]
                 obj = brain.getObject()
                 if userid:
-                    self.utility.makeAnnotation(userid, obj)
+                    adapted = IMarkAsReadAnnotatableAdapter(obj)
+                    adapted.makeAnnotation(userid)
                     message = _(u"You have read this object")
                     return_url = obj.absolute_url()
                 else:
