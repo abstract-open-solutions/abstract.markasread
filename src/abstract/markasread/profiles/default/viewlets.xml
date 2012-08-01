@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <object>
- <order manager="plone.belowcontent" skinname="Plone Default">
-  <viewlet name="plone.belowcontenttitle.keywords"/>
-  <viewlet name="plone.nextprevious"/>
-  <viewlet name="plone.manage_portlets_fallback"/>
- </order>
+    <order manager="plone.belowcontentbody">
+     <viewlet name="plone.belowcontentbody.relateditems"/>
+     <viewlet name="plone.abovecontenttitle.documentactions"/>
+     <viewlet name="abstract.markasread"/>
+    </order>
 </object>
