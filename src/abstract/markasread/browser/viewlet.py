@@ -54,7 +54,7 @@ class MarkAsReadViewlet(ViewletBase):
         portal_type = getattr(self.context, 'portal_type', None)
         if portal_type == 'Folder':
             return False
-        return False
+        return True
 
     def IsReadedByUser(self):
         current_user = self.getCurrentUser()
