@@ -6,7 +6,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from ..interfaces import IMarkAsReadForm
-from  ..interfaces import IMarkAsReadAttributeAnnotatable
 from ..interfaces import IMarkAsReadAnnotatableAdapter
 
 
@@ -45,14 +44,16 @@ class MarkAsReadViewlet(ViewletBase):
         1. current user is Authenticated
         2. if current object type is in allowed_types registry
         """
-        if not IMarkAsReadAttributeAnnotatable.providedBy(self.context):
-            return False
-
         current_user = self.getCurrentUser()
         if 'Authenticated' not in current_user.getRoles():
             return False
         portal_type = getattr(self.context, 'portal_type', None)
-        if portal_type == 'Folder':
+        allowed_types = list(self.settings.allowed_types)
+        # XXX: remove Folder type from allowed types
+        # it has not sense to "mark as read" folders
+        if 'Folder' in allowed_types:
+            allowed_types.remove('Folder')
+        if portal_type not in allowed_types:
             return False
         return True
 

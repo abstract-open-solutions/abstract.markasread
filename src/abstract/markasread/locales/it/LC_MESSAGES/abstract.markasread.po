@@ -52,7 +52,7 @@ msgstr "Specifica le configurazioni per Mark as read"
 
 #: ../browser/action.py:32
 msgid "You have read this object"
-msgstr "Hai letto questo oggetto"
+msgstr "Hai preso visione del documento"
 
 #: ../browser/action.py:23
 msgid "You have to selct checkbox"
@@ -71,7 +71,7 @@ msgstr "Nome e cognome"
 #. Default: "Complete List Read Users"
 #: ../browser/templates/markasread.pt:28
 msgid "listusers_label"
-msgstr "Lista completa degli utenti che hanno letto questo oggetto"
+msgstr "Lista completa degli utenti che hanno preso visione del documento"
 
 #: ../browser/templates/markasread.pt:15
 msgid "read_label"

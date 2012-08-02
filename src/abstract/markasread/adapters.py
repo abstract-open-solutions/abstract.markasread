@@ -50,7 +50,7 @@ class MarkAsReadAnnotatableAdapter(object):
         """deleting annotations method"""
         if self.checkMarkAsReadAttributeAnnotatableObject():
             obj_annotated = IAnnotations(self.context)
-            obj_annotated['read_users'] = []
+            obj_annotated['read_users'] = OISet()
             self.context.reindexObject()
         else:
             obj_annotated = self.context
