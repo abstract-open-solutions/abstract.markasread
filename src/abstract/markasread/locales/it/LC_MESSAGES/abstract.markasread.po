@@ -75,7 +75,7 @@ msgstr "Lista completa degli utenti che hanno letto questo oggetto"
 
 #: ../browser/templates/markasread.pt:15
 msgid "read_label"
-msgstr "Dichiaro di aver preso visione del documento"
+msgstr "Dichiaro di aver preso visione del documento e di averne compreso il contenuto"
 
 #. Default: "Insert text for users."
 #: ../interfaces.py:19
