@@ -6,6 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from ..interfaces import IMarkAsReadForm
+from  ..interfaces import IMarkAsReadAttributeAnnotatable
 from ..interfaces import IMarkAsReadAnnotatableAdapter
 
 
@@ -44,7 +45,7 @@ class MarkAsReadViewlet(ViewletBase):
         1. current user is Authenticated
         2. if current object type is in allowed_types registry
         """
-        if not IMarkAsReadAnnotatableAdapter.providedBy(self.context):
+        if not IMarkAsReadAttributeAnnotatable.providedBy(self.context):
             return False
 
         current_user = self.getCurrentUser()
