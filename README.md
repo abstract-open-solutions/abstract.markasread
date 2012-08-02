@@ -1,6 +1,6 @@
-==================
+=====================
 Abstract Mark as Read
-==================
+=====================
 
 Introduction
 ============
@@ -15,7 +15,6 @@ How it works
 ============
 
 Authenticated user can marks as read any "markable" object.
-
 
 Manager can choose wich types apply functionality to.
 
