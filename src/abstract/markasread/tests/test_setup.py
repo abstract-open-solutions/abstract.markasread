@@ -1,9 +1,10 @@
 import unittest2 as unittest
-
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 
-from abstract.markasread.testing import\
-    ABSTRACT_MARKASREAD_INTEGRATION_TESTING
+from ..testing import ABSTRACT_MARKASREAD_INTEGRATION_TESTING
+from ..interfaces import IPreferences
 
 
 class TestSetup(unittest.TestCase):
@@ -23,3 +24,8 @@ class TestSetup(unittest.TestCase):
         installed = [p['id'] for p in self.qi_tool.listInstalledProducts()]
         self.assertTrue(pid in installed,
                         'package appears not to have been installed')
+
+    def test_preferences(self):
+        prefs = getUtility(IRegistry).forInterface(IPreferences)
+        self.assertEqual(prefs.text, None)
+        self.assertEqual(prefs.allowed_types, None)
