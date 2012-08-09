@@ -17,11 +17,9 @@ setup(name='abstract.markasread',
       version=version,
       description="Mark as read functionality for Plone",
       long_description=long_description,
-      # Get more strings from
-      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
-        ],
+      ],
       keywords='',
       author='',
       author_email='',

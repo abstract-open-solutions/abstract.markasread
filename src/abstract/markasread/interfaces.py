@@ -1,56 +1,63 @@
 from zope import schema
 from zope.interface import Interface
 from plone.theme.interfaces import IDefaultPloneLayer
-from zope.annotation.interfaces import IAttributeAnnotatable
 
-from abstract.markasread import MessageFactory as _
+from .. import MessageFactory as _
 
 
-class IAbstractMarkAsReadLayer(IDefaultPloneLayer):
-    """Marker interface that defines a Zope 3 browser layer.
+class IPreferences(Interface):
+    """The preferences
+    """
+
+    text = schema.Text(
+        title=_(u"Text"),
+        description=_(u'A descriptive text that appears'
+                      u' on top of the "mark as read" checkbox'),
+        required=False
+    )
+
+    allowed_types = schema.Tuple(
+        title=_(u"Types"),
+        description=_(u"The types that can be marked as read"),
+        missing_value=tuple(),
+        value_type=schema.Choice(
+            vocabulary="plone.app.vocabularies.UserFriendlyTypes"
+        ),
+        required=False
+    )
+
+
+class IBrowserLayer(IDefaultPloneLayer):
+    """The browser layer of the package
     """
 
 
-class IMarkAsReadForm(Interface):
-    """ The view for Mark as read  prefs form. """
-
-    text = schema.TextLine(
-            title=_('text_label', u"Mark as read text"),
-            description=_('text_description',
-                 u"Insert text for users."),
-            required=False,
-        )
-
-    allowed_types = schema.Tuple(title=_(u'Portal types'),
-          description=_(u"Portal types mark as read "
-              u"viewlet may be attached to."),
-          missing_value=tuple(),
-          value_type=schema.Choice(
-                   vocabulary="plone.app.vocabularies.UserFriendlyTypes"),
-          required=False)
+class IMarkable(Interface):
+    """Whether the context can be "marked as read"
+    """
 
 
-class IMarkAsReadAttributeAnnotatable(IAttributeAnnotatable):
-    """ IAttributeAnnotatable Marker interface """
+class IStorage(Interface):
+    """Where the information on "who has read this" is kept.
+    """
 
+    def add(userid):
+        """Adds the passed ``userid`` to the list of those
+        who have read the context
+        """
 
-class IMarkAsReadAnnotatableAdapter(Interface):
-    """ Utility Interface """
+    def remove(userid):
+        """Removes ``userid`` from the list of those
+        who have read the context.
 
-    def checkMarkAsReadAttributeAnnotatableObject():
-        """ check if annotatable """
+        Raises ``KeyError`` if ``userid`` is not present in the list.
+        """
 
-    def makeAnnotation():
-        """annotating method"""
+    def __contains__(userid):
+        """Whether ``userid`` is in the list of those who have read.
+        """
 
-    def removeAnnotation():
-        """remove userid from read users annotation on obj"""
-
-    def resetAnnotation():
-        """deleting annotations method"""
-
-    def getAnnotation():
-        """get annotations by name"""
-
-    def IsReadedByUser():
-        """check if userid is in annotation for obj"""
+    def __iter__():
+        """Returns an iterator that yields the user IDs
+        that have read the context
+        """

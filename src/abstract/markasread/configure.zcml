@@ -8,23 +8,32 @@
   <includeDependencies package="." />
   <i18n:registerTranslations directory="locales" />
 
+
+  <class class="Products.Archetypes.BaseContent.BaseContent">
+    <implements interface=".interfaces.IMarkable"/>
+  </class>
+
+  <adapter
+      for=".interfaces.IMarkable"
+      provides=".interfaces.IStorage"
+      factory=".storage.AnnotatedStorage" />
+
+  <adapter name="read_users" factory=".indexers.read_users" />
+
   <include package=".browser" />
-  <include file="annotations.zcml" />
 
   <genericsetup:registerProfile
       name="default"
       title="abstract.markasread"
       directory="profiles/default"
       description="Installs the abstract.markasread package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+      provides="Products.GenericSetup.interfaces.EXTENSION" />
 
   <genericsetup:registerProfile
       name="uninstall"
       title="uninstall abstract.markasread"
       directory="profiles/uninstall"
       description="Uninstalls the abstract.markasread package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-  />
+      provides="Products.GenericSetup.interfaces.EXTENSION" />
 
 </configure>

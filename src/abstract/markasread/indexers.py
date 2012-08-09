@@ -1,15 +1,12 @@
 from plone.indexer.decorator import indexer
 
-from .interfaces import IMarkAsReadAnnotatableAdapter
-from .interfaces import IMarkAsReadAttributeAnnotatable
-
-from logging import getLogger
-logger = getLogger('abstract.markasread - indexer')
+from .interfaces import IStorage
+from .interfaces import IMarkable
 
 
-@indexer(IMarkAsReadAttributeAnnotatable)
-def read_users(obj, **kw):
-    """id into old db"""
-    adapted = IMarkAsReadAnnotatableAdapter(obj)
-    ret = adapted.getAnnotation()
-    return ret
+@indexer(IMarkable)
+def read_users(obj, **kw): # pylint: disable=W0613
+    """Returns a list of user IDs that represent
+    those that have "marked ``obj`` as read"
+    """
+    return list(IStorage(obj))

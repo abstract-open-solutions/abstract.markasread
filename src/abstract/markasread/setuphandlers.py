@@ -1,6 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 
-    
+
 def removeConfiglet(context):
     if context.readDataFile('amar-uninstall.txt') is None:
         return

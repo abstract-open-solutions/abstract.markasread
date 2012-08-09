@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <layers>
-    <layer name="abstract.markasread" 
-           interface="abstract.markasread.interfaces.IAbstractMarkAsReadLayer" />
+  <layer name="abstract.markasread"
+         interface="abstract.markasread.interfaces.IBrowserLayer" />
 </layers>
