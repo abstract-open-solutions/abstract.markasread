@@ -2,7 +2,7 @@ from zope import schema
 from zope.interface import Interface
 from plone.theme.interfaces import IDefaultPloneLayer
 
-from .. import MessageFactory as _
+from . import MessageFactory as _
 
 
 class IPreferences(Interface):
@@ -24,6 +24,15 @@ class IPreferences(Interface):
             vocabulary="plone.app.vocabularies.UserFriendlyTypes"
         ),
         required=False
+    )
+
+
+class IMarkForm(Interface):
+    read = schema.Bool(
+        title=_(u'Have you read this content?'),
+        description=_(u'Check this field if you have read this document.'),
+        required=True,
+        default=False,
     )
 
 

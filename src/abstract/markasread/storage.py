@@ -1,8 +1,10 @@
+from zope.component import adapts
 from BTrees.OIBTree import OISet
 from zope.interface import implements
 from zope.annotation import factory
 
 from .interfaces import IStorage
+from .interfaces import IMarkable
 
 
 class Storage(OISet):
@@ -10,6 +12,7 @@ class Storage(OISet):
     """
 
     implements(IStorage)
+    adapts(IMarkable)
 
     def add(self, userid):
         super(Storage, self).add(userid)

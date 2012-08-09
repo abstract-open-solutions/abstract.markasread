@@ -1,7 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
-from ..interfaces import IMarkAsReadAnnotatableAdapter
+from ..interfaces import IStorage
 
 
 class ListReadUsers(BrowserView):
@@ -13,7 +13,7 @@ class ListReadUsers(BrowserView):
 
     @property
     def adapted(self):
-        adapted = IMarkAsReadAnnotatableAdapter(self.context)
+        adapted = IStorage(self.context)
         return adapted
 
     def getReadUsers(self):

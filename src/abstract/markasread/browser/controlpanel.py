@@ -16,19 +16,19 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFPlone import PloneMessageFactory as _p
 
-from abstract.markasread import MessageFactory as _
-from abstract.markasread.interfaces import IMarkAsReadForm
+from ..interfaces import IPreferences
+from .. import MessageFactory as _
 
 
-class MarkAsReadControlPanelAdapter(SchemaAdapterBase):
+class ControlPanelAdapter(SchemaAdapterBase):
     """ Control Panel adapter """
 
     adapts(IPloneSiteRoot)
-    implements(IMarkAsReadForm)
+    implements(IPreferences)
 
     def __init__(self, context):
-        super(MarkAsReadControlPanelAdapter, self).__init__(context)
-        self.settings = getUtility(IRegistry).forInterface(IMarkAsReadForm, False)
+        super(ControlPanelAdapter, self).__init__(context)
+        self.settings = getUtility(IRegistry).forInterface(IPreferences)
         self.context = context
 
     def get_text(self):
@@ -38,7 +38,7 @@ class MarkAsReadControlPanelAdapter(SchemaAdapterBase):
         self.settings.text = text
 
     text = property(get_text, set_text)
-    
+
     def get_allowed_types(self):
         if self.settings.allowed_types:
             return self.settings.allowed_types
@@ -50,11 +50,10 @@ class MarkAsReadControlPanelAdapter(SchemaAdapterBase):
     allowed_types = property(get_allowed_types, set_allowed_types)
 
 
-class MarkAsReadForm(ControlPanelForm):
+class Controlpanel(ControlPanelForm):
     """ The view class for the mark as read preferences form. """
 
-    implements(IMarkAsReadForm)
-    form_fields = form.FormFields(IMarkAsReadForm)
+    form_fields = form.FormFields(IPreferences)
 
     label = _(u'Mark As Read Settings Form')
     description = _(u'Select properties for Mark As Read')

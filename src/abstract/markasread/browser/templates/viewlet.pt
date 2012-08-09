@@ -6,16 +6,10 @@
                 read_by_user view/IsReadedByUser;
                 current_user view/getCurrentUser">
         <p tal:content="view/text">text</p>
-        <form action="" method="GET" tal:attributes="action string:${context/absolute_url}/@@markasread-action">
-            <input type="hidden" name="userid" value="" tal:attributes="value view/getCurrentUser" />
-            <input type="hidden" name="uid" value="" tal:attributes="value view/getCurrentUID" />
-            <input type="checkbox" name="read" value="read"
-                tal:attributes="checked python:read_by_user and 'checked' or '';
-                                disabled python:read_by_user and 'disabled' or ''"/>
-            <label i18n:translate="read_label"></label>
-            <input i18n:attributes="value" type="submit" value="Save" name="submit"
-                tal:attributes="disabled python:read_by_user and 'disabled' or ''" />
-        </form>
+
+        <div id="layout-contents">
+          <div tal:replace="structure view/form/render" />
+        </div>
 
         <tal:comment replace="nothing">
             <div

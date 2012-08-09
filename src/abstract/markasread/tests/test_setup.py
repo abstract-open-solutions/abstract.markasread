@@ -6,7 +6,7 @@ from abstract.markasread.testing import\
     ABSTRACT_MARKASREAD_INTEGRATION_TESTING
 
 
-class TestExample(unittest.TestCase):
+class TestSetup(unittest.TestCase):
 
     layer = ABSTRACT_MARKASREAD_INTEGRATION_TESTING
 

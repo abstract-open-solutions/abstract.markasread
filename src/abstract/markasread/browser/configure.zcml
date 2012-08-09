@@ -4,13 +4,13 @@
     i18n_domain="abstract.markasread">
 
     <!-- Control Panel adapter -->
-    <adapter factory=".markasreadprefs.MarkAsReadControlPanelAdapter" />
+    <adapter factory=".controlpanel.ControlPanelAdapter" />
 
     <browser:page
            name="markasread-controlpanel"
            for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-           class=".markasreadprefs.MarkAsReadForm"
-           layer="..interfaces.IAbstractMarkAsReadLayer"
+           class=".controlpanel.Controlpanel"
+           layer="..interfaces.IBrowserLayer"
            permission="cmf.ManagePortal"
     />
 
@@ -18,26 +18,18 @@
     <browser:viewlet
         name="abstract.markasread"
         manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-        class=".viewlet.MarkAsReadViewlet"
-        layer="..interfaces.IAbstractMarkAsReadLayer"
+        class=".viewlet.Viewlet"
+        layer="..interfaces.IBrowserLayer"
         permission="zope2.View"
         />
 
     <!-- Mark as read action -->
     <browser:page
-       name="markasread-action"
-       for="*"
-       class=".action.MarkAsReadAction"
-       layer="..interfaces.IAbstractMarkAsReadLayer"
-       permission="zope2.View"
-    />
-
-    <browser:page
        name="list_readusers"
        for="*"
        class=".views.ListReadUsers"
        template="templates/list_readusers.pt"
-       layer="..interfaces.IAbstractMarkAsReadLayer"
+       layer="..interfaces.IBrowserLayer"
        permission="cmf.ManagePortal"
     />
 
