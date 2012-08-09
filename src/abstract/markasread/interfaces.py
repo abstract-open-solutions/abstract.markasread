@@ -1,5 +1,6 @@
 from zope import schema
 from zope.interface import Interface
+from zope.location.interfaces import ILocation
 from plone.theme.interfaces import IDefaultPloneLayer
 
 from . import MessageFactory as _
@@ -46,7 +47,7 @@ class IMarkable(Interface):
     """
 
 
-class IStorage(Interface):
+class IStorage(ILocation):
     """Where the information on "who has read this" is kept.
     """
 
@@ -69,4 +70,10 @@ class IStorage(Interface):
     def __iter__():
         """Returns an iterator that yields the user IDs
         that have read the context
+        """
+
+    def clear():
+        """Wipes out all the information contained in the storage.
+
+        Handle with care. Keep away from children below age 30.
         """
