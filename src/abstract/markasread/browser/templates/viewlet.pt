@@ -17,7 +17,7 @@
 
         <div tal:condition="python:checkPermission('Manage portal', context)">
             <a tal:attributes="href string:${context/absolute_url}/@@userslist">
-               <span i18n:translate="">Complete List Read Users</span>
+               <span i18n:translate="">List of users who have already read this content</span>
             </a>
         </div>
     </div>

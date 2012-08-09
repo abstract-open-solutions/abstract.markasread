@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-08-01 21:01+0000\n"
+"POT-Creation-Date: 2012-08-09 10:44+0000\n"
 "PO-Revision-Date: 2012-08-01 14:32+0000\n"
 "Last-Translator: Biagio Grimaldi <biagio@abstract.it>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -14,81 +14,59 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: abstract.markasread\n"
 
+#: ../interfaces.py:15
+msgid "A descriptive text that appears on top of the "mark as read" checkbox"
+msgstr "Un testo descrittivo che apparirà sopra il pulsante di conferma di avvenuta lettura"
+
 #: ../profiles/default/controlpanel.xml
 msgid "Abstract Mark As Read Settings"
-msgstr "Configurazioni Mark as read"
+msgstr "Preferenze"
 
-#: ../browser/action.py:37
-msgid "Error! No object to read"
-msgstr "Errore! Nessun oggetto specificato"
+#: ../browser/templates/userslist.pt:47
+msgid "Back"
+msgstr "Indietro"
 
-#: ../browser/action.py:35
-msgid "Error! No user specified"
-msgstr "Errore! Nessun utente specificato"
+#: ../interfaces.py:35
+msgid "Check this field if you have read this document."
+msgstr "Spunta la casella se hai letto e compreso il documento."
 
-#: ../browser/markasreadprefs.py:61
-msgid "Mark As Read Settings"
-msgstr "Configurazioni Mark as read"
+#: ../browser/templates/userslist.pt:28
+msgid "Fullname"
+msgstr "Nome completo"
 
-#: ../browser/markasreadprefs.py:59
+#: ../interfaces.py:34
+msgid "Have you read this content?"
+msgstr "Hai letto questo contenuto?"
+
+#: ../browser/templates/viewlet.pt:20
+msgid "List of users who have already read this content"
+msgstr "Lista degli utenti che hanno dichiarato di aver letto questo contenuto"
+
+#: ../browser/controlpanel.py:9
 msgid "Mark As Read Settings Form"
-msgstr "Form Mark as read"
+msgstr "Mark as read - preferenze"
 
-#: ../interfaces.py:24
-msgid "Portal types"
-msgstr "Tipi di contenuto"
-
-#: ../interfaces.py:25
-msgid "Portal types mark as read viewlet may be attached to."
-msgstr "Scegli i tipi ai quali aggiungere la possibilità di essere segnati come letti"
-
-#: ../browser/templates/markasread.pt:16
+#: ../browser/viewlet.py:27
 msgid "Save"
 msgstr "Salva"
 
-#: ../browser/markasreadprefs.py:60
-msgid "Select properties for Mark As Read"
-msgstr "Specifica le configurazioni per Mark as read"
+#: ../interfaces.py:14
+msgid "Text"
+msgstr "Testo"
 
-#: ../browser/action.py:32
-msgid "You have read this object"
-msgstr "Hai preso visione del documento"
+#: ../interfaces.py:22
+msgid "The types that can be marked as read"
+msgstr "I tipi di contenuto che possono essere marcati come letti"
 
-#: ../browser/action.py:23
-msgid "You have to selct checkbox"
-msgstr "Devi selezionare la casella 'Letto'"
+#: ../interfaces.py:21
+msgid "Types"
+msgstr "Tipi di contenuto"
 
-#. Default: "Back"
-#: ../browser/templates/list_readusers.pt:52
-msgid "back"
-msgstr "Indietro"
-
-#. Default: "Fullname"
-#: ../browser/templates/list_readusers.pt:32
-msgid "fullname_label"
-msgstr "Nome e cognome"
-
-#. Default: "Complete List Read Users"
-#: ../browser/templates/markasread.pt:28
-msgid "listusers_label"
-msgstr "Lista completa degli utenti che hanno preso visione del documento"
-
-#: ../browser/templates/markasread.pt:15
-msgid "read_label"
-msgstr "Dichiaro di aver preso visione del documento e di averne compreso il contenuto"
-
-#. Default: "Insert text for users."
-#: ../interfaces.py:19
-msgid "text_description"
-msgstr "Specifica il testo che verrà visualizzato nella form"
-
-#. Default: "Mark as read text"
-#: ../interfaces.py:18
-msgid "text_label"
-msgstr "Testo introduttivo della form"
-
-#. Default: "Username"
-#: ../browser/templates/list_readusers.pt:33
-msgid "username_label"
+#: ../browser/templates/userslist.pt:29
+msgid "Username"
 msgstr "Nome utente"
+
+#: ../browser/templates/userslist.pt:15
+msgid "Users who have already read this content"
+msgstr "Utenti che hanno dichiarato di aver letto questo contenuto"
 

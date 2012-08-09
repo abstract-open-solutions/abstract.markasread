@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-01 21:01+0000\n"
+"POT-Creation-Date: 2012-08-09 10:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,81 +17,59 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: abstract.markasread\n"
 
+#: ../interfaces.py:15
+msgid "A descriptive text that appears on top of the "mark as read" checkbox"
+msgstr ""
+
 #: ../profiles/default/controlpanel.xml
 msgid "Abstract Mark As Read Settings"
 msgstr ""
 
-#: ../browser/action.py:37
-msgid "Error! No object to read"
+#: ../browser/templates/userslist.pt:47
+msgid "Back"
 msgstr ""
 
-#: ../browser/action.py:35
-msgid "Error! No user specified"
+#: ../interfaces.py:35
+msgid "Check this field if you have read this document."
 msgstr ""
 
-#: ../browser/markasreadprefs.py:61
-msgid "Mark As Read Settings"
+#: ../browser/templates/userslist.pt:28
+msgid "Fullname"
 msgstr ""
 
-#: ../browser/markasreadprefs.py:59
+#: ../interfaces.py:34
+msgid "Have you read this content?"
+msgstr ""
+
+#: ../browser/templates/viewlet.pt:20
+msgid "List of users who have already read this content"
+msgstr ""
+
+#: ../browser/controlpanel.py:9
 msgid "Mark As Read Settings Form"
 msgstr ""
 
-#: ../interfaces.py:24
-msgid "Portal types"
-msgstr ""
-
-#: ../interfaces.py:25
-msgid "Portal types mark as read viewlet may be attached to."
-msgstr ""
-
-#: ../browser/templates/markasread.pt:16
+#: ../browser/viewlet.py:27
 msgid "Save"
 msgstr ""
 
-#: ../browser/markasreadprefs.py:60
-msgid "Select properties for Mark As Read"
+#: ../interfaces.py:14
+msgid "Text"
 msgstr ""
 
-#: ../browser/action.py:32
-msgid "You have read this object"
+#: ../interfaces.py:22
+msgid "The types that can be marked as read"
 msgstr ""
 
-#: ../browser/action.py:23
-msgid "You have to selct checkbox"
+#: ../interfaces.py:21
+msgid "Types"
 msgstr ""
 
-#. Default: "Back"
-#: ../browser/templates/list_readusers.pt:52
-msgid "back"
+#: ../browser/templates/userslist.pt:29
+msgid "Username"
 msgstr ""
 
-#. Default: "Fullname"
-#: ../browser/templates/list_readusers.pt:32
-msgid "fullname_label"
-msgstr ""
-
-#. Default: "Complete List Read Users"
-#: ../browser/templates/markasread.pt:28
-msgid "listusers_label"
-msgstr ""
-
-#: ../browser/templates/markasread.pt:15
-msgid "read_label"
-msgstr ""
-
-#. Default: "Insert text for users."
-#: ../interfaces.py:19
-msgid "text_description"
-msgstr ""
-
-#. Default: "Mark as read text"
-#: ../interfaces.py:18
-msgid "text_label"
-msgstr ""
-
-#. Default: "Username"
-#: ../browser/templates/list_readusers.pt:33
-msgid "username_label"
+#: ../browser/templates/userslist.pt:15
+msgid "Users who have already read this content"
 msgstr ""
 
