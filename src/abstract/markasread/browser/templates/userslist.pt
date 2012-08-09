@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="abstract.markasread">
+<body>
+
+  <metal:fill fill-slot="main">
+    <metal:main define-macro="main"
+       tal:define="dummy python:request.set('disable_border', True)">
+
+      <h1 i18n:translate="">Users who have already read this content</h1>
+
+      <div tal:define="users view/get_users;
+                      Batch python:modules['Products.CMFPlone'].Batch;
+                      b_size python:10;
+                      b_start python:0;
+                      b_start request/b_start | b_start;
+                      batch python:Batch(users, b_size, int(b_start), orphan=1);">
+
+        <tal:results tal:condition="users">
+            <table class="listing">
+                <tbody>
+                    <tr>
+                        <th i18n:translate="">Fullname</th>
+                        <th i18n:translate="">Username</th>
+                    </tr>
+                    <tr tal:repeat="user batch">
+                        <td>
+                            <span tal:content="user/fullname">fullname</span>
+                        </td>
+                        <td>
+                            <span tal:content="user/userid">userid</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tal:results>
+
+        <!-- Batch Navigation -->
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+      </div>
+      <div>
+        <a tal:attributes="href string:${context/absolute_url}"
+           i18n:translate="">Back</a>
+      </div>
+
+    </metal:main>
+  </metal:fill>
+</body>
+
+</html>

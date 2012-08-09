@@ -28,4 +28,4 @@ class TestSetup(unittest.TestCase):
     def test_preferences(self):
         prefs = getUtility(IRegistry).forInterface(IPreferences)
         self.assertEqual(prefs.text, None)
-        self.assertEqual(prefs.allowed_types, None)
+        self.assertEqual(prefs.allowed_types, tuple())

@@ -20,7 +20,9 @@ from .. import MessageFactory as _
 
 
 class MarkForm(form.Form):
+    template = ViewPageTemplateFile("templates/form.pt")
     fields = field.Fields(IMarkForm)
+    ignoreContext = True
 
     @button.buttonAndHandler(_(u'Save'))
     def handleSave(self, action):
@@ -63,7 +65,8 @@ class Viewlet(ViewletBase):
             (self.context, self.request),
             name="plone_portal_state"
         )
-        if ps.anonymous:
+
+        if ps.anonymous():
             return False
         if self.context.portal_type not in self.settings.allowed_types:
             return False

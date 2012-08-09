@@ -3,9 +3,6 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="abstract.markasread">
 
-    <!-- Control Panel adapter -->
-    <adapter factory=".controlpanel.ControlPanelAdapter" />
-
     <browser:page
            name="markasread-controlpanel"
            for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -25,10 +22,10 @@
 
     <!-- Mark as read action -->
     <browser:page
-       name="list_readusers"
-       for="*"
-       class=".views.ListReadUsers"
-       template="templates/list_readusers.pt"
+       name="userslist"
+       for="..interfaces.IMarkable"
+       class=".views.UsersList"
+       template="templates/userslist.pt"
        layer="..interfaces.IBrowserLayer"
        permission="cmf.ManagePortal"
     />

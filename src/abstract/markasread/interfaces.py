@@ -21,6 +21,7 @@ class IPreferences(Interface):
         title=_(u"Types"),
         description=_(u"The types that can be marked as read"),
         missing_value=tuple(),
+        default=tuple(),
         value_type=schema.Choice(
             vocabulary="plone.app.vocabularies.UserFriendlyTypes"
         ),

@@ -4,24 +4,16 @@ from Products.Five.browser import BrowserView
 from ..interfaces import IStorage
 
 
-class ListReadUsers(BrowserView):
-    """Read users listing on context"""
+class UsersList(BrowserView):
 
-    @property
-    def portal_membership(self):
-        return getToolByName(self.context, 'portal_membership')
-
-    @property
-    def adapted(self):
-        adapted = IStorage(self.context)
-        return adapted
-
-    def getReadUsers(self):
-        """list read users"""
-        read_users = self.adapted.getAnnotation()
+    def get_users(self):
+        """Return a list of users who have already read the content
+        """
+        pm = getToolByName(self.context, 'portal_membership')
+        storage = IStorage(self.context)
         results = []
-        for ru in read_users:
-            member = self.portal_membership.getMemberById(ru)
+        for usr in storage:
+            member = pm.getMemberById(usr)
             if member:
                 results.append(
                     {

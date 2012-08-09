@@ -24,7 +24,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="abstract.markasread"
+      title="Abstract - Mark as read"
       directory="profiles/default"
       description="Installs the abstract.markasread package"
       provides="Products.GenericSetup.interfaces.EXTENSION" />
