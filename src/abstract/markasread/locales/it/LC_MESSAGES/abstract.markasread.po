@@ -36,7 +36,7 @@ msgstr "Nome completo"
 
 #: ../interfaces.py:34
 msgid "Have you read this content?"
-msgstr "Hai letto questo contenuto?"
+msgstr "Dichiaro di aver preso visione del documento e di averne compreso il contenuto."
 
 #: ../browser/templates/viewlet.pt:20
 msgid "List of users who have already read this content"
