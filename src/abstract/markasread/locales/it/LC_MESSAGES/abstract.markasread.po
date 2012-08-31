@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-08-31 10:19+0000\n"
+"POT-Creation-Date: 2012-08-31 10:16+0000\n"
 "PO-Revision-Date: 2012-08-01 14:32+0000\n"
 "Last-Translator: Biagio Grimaldi <biagio@abstract.it>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr "Nome completo"
 
 #: ../interfaces.py:34
 msgid "Have you read this content?"
-msgstr "Hai letto questo contenuto?"
+msgstr "Dichiaro di aver preso visione del documento e di averne compreso il contenuto."
 
 #: ../browser/templates/viewlet.pt:20
 msgid "List of users who have already read this content"

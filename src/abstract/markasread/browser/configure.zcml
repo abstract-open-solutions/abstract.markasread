@@ -30,4 +30,9 @@
        permission="cmf.ManagePortal"
     />
 
+  <adapter
+      for="..interfaces.IMarkable"
+      provides="..interfaces.IMarkForm"
+      factory=".viewlet.MarkFormAdapter" />
+
 </configure>
