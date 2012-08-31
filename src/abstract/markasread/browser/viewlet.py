@@ -17,6 +17,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from ..interfaces import IStorage
 from ..interfaces import IPreferences
 from ..interfaces import IMarkForm
+from ..interfaces import IMarkable
 from ..utils import get_current_user
 from .. import MessageFactory as _
 
@@ -74,9 +75,13 @@ class Viewlet(ViewletBase):
 
     def update(self):
         super(Viewlet, self).update()
-        z2.switch_on(self, request_layer=IFormLayer)
-        self.form = MarkForm(aq_inner(self.context), self.request)
-        self.form.update()
+        if self.available():
+            z2.switch_on(self, request_layer=IFormLayer)
+            self.form = MarkForm(aq_inner(self.context), self.request)
+            self.form.update()
+
+    def available(self):
+        return IMarkable.providedBy(self.context)
 
     def is_visible(self):
         """Whether to show the viewlet or not.
