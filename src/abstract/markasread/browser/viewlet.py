@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_inner
+
+from zope.interface import implements
 from zope.component import getUtility, getMultiAdapter
 
 from z3c.form import form, button, field
@@ -19,10 +21,36 @@ from ..utils import get_current_user
 from .. import MessageFactory as _
 
 
+class MarkFormAdapter(object):
+    implements(IMarkForm)
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def member_id(self):
+        return get_current_user(self.context).getProperty('id')
+
+    @property
+    def storage(self):
+        return IStorage(self.context)
+
+    def get_read(self):
+        return self.member_id in self.storage
+
+    def set_read(self, value):
+        if value:
+            self.storage.add(self.member_id)
+        else:
+            self.storage.remove(self.member_id)
+
+    read = property(get_read, set_read)
+
+
 class MarkForm(form.Form):
     template = ViewPageTemplateFile("templates/form.pt")
     fields = field.Fields(IMarkForm)
-    ignoreContext = True
+    # ignoreContext = True
 
     @button.buttonAndHandler(_(u'Save'))
     def handleSave(self, action):
@@ -32,9 +60,7 @@ class MarkForm(form.Form):
             return
 
         # TODO: write some message to user
-        member = get_current_user(self.context)
-        storage = IStorage(self.context)
-        storage.add(member.getProperty('id'))
+        IMarkForm(self.context).read = data['read']
 
 
 class Viewlet(ViewletBase):

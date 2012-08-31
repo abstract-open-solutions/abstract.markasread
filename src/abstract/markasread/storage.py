@@ -29,12 +29,13 @@ class Storage(Persistent):
         # import ipdb; ipdb.set_trace( )
         self._data = OISet()
         self.__name__ = None
+        self.__parent__ = None
 
     def set_parent(self, parent):
-        self._parent = (aq_base(parent),)
+        self._parent = aq_base(parent)
 
     def get_parent(self):
-        return self._parent[0]
+        return self._parent
 
     __parent__ = property(get_parent, set_parent)
 
