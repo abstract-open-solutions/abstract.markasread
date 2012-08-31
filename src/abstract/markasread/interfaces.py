@@ -12,8 +12,8 @@ class IPreferences(Interface):
 
     text = schema.Text(
         title=_(u"Text"),
-        description=_(u'A descriptive text that appears'
-                      u' on top of the "mark as read" checkbox'),
+        description=_(u"A descriptive text that appears"
+                      u" on top of the 'mark as read' checkbox"),
         required=False
     )
 
