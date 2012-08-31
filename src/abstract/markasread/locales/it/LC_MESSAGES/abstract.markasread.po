@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-08-09 10:44+0000\n"
+"POT-Creation-Date: 2012-08-31 10:16+0000\n"
 "PO-Revision-Date: 2012-08-01 14:32+0000\n"
 "Last-Translator: Biagio Grimaldi <biagio@abstract.it>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Domain: abstract.markasread\n"
 
 #: ../interfaces.py:15
-msgid "A descriptive text that appears on top of the "mark as read" checkbox"
+msgid "A descriptive text that appears on top of the 'mark as read' checkbox"
 msgstr "Un testo descrittivo che apparirà sopra il pulsante di conferma di avvenuta lettura"
 
 #: ../profiles/default/controlpanel.xml
