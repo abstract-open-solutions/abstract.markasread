@@ -1,3 +1,4 @@
+from Acquisition import aq_base
 from zope.component import adapts
 from persistent import Persistent
 from BTrees.OIBTree import OISet
@@ -25,9 +26,17 @@ class Storage(Persistent):
 
     def __init__(self):
         super(Storage, self).__init__()
+        # import ipdb; ipdb.set_trace( )
         self._data = OISet()
-        self.__parent__ = None
         self.__name__ = None
+
+    def set_parent(self, parent):
+        self._parent = (aq_base(parent),)
+
+    def get_parent(self):
+        return self._parent[0]
+
+    __parent__ = property(get_parent, set_parent)
 
     def __getattr__(self, name):
         if name is ('add', 'remove', 'clear'):
